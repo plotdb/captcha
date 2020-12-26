@@ -5,6 +5,11 @@ Captcha wrapper for captcha services.
 
 ## Usage
 
+include `captcha.js`:
+
+    <script src="dist/captcha.js"></script>
+
+
 use `captcha` object to create captcha service wrappers like this:
 
     mycaptcha = new captcha({
@@ -61,6 +66,23 @@ Since `token` usually involves server-side verification, you can use `execute` f
      - `cb` should return Promise.
        If verification failed, `cb` can optionally rejects with error object recognizable by `isVerifyFailed`. 
  - `setConfig`: update `config` object.
+
+## ReCaptcha
+
+`captcha` ships with predefined Google Recaptcha wrapper. use it by first including the needed js:
+
+    <script src="dist/captcha.js"></script>
+    <script src="dist/recaptcha.js"></script>
+
+
+then:
+
+    recaptcha.v2.setConfig({sitekey: '....', enabled: ture});
+    recaptcha.v2.get();
+
+    recaptcha.v3.setConfig({sitekey: '....', enabled: ture});
+    recaptcha.v3.get();
+
 
 ## License
 
