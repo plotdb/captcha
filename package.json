@@ -1,6 +1,6 @@
 {
   "author": "zbryikt",
-  "name": "captcha",
+  "name": "@plotdb/captcha",
   "license": "MIT",
   "description": "captcha sample",
   "version": "0.0.1",
