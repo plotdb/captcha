@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+echo "prepare..."
+rm -rf dist
+mkdir -p dist
+
+echo "building captcha.ls -> captcha.js ..."
+npx lsc -cp src/captcha.ls > dist/captcha.js
+echo "minify captcha.js -> captcha.min.js ..."
+npx uglifyjs dist/captcha.js > dist/captcha.min.js
+
+echo "building recaptcha.ls -> recaptcha.js ..."
+npx lsc -cp src/recaptcha.ls > dist/recaptcha.js
+echo "minify recaptcha.js -> recaptcha.min.js ..."
+npx uglifyjs dist/recaptcha.js > dist/recaptcha.min.js
+
+echo "copy dist to web ..."
+rm -rf web/static/assets/lib/captcha/dev/
+mkdir -p web/static/assets/lib/captcha/dev/
+cp -R dist/* web/static/assets/lib/captcha/dev/

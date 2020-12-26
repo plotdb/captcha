@@ -1,0 +1,19 @@
+doctype html
+html
+  include /../../static/assets/lib/bootstrap.ldui/main/index.pug
+  head
+    +css("assets/lib/bootstrap/main/css/bootstrap.min.css")
+    +css("assets/lib/bootstrap.ldui/main/bootstrap.ldui.min.css")
+    +css("assets/lib/ldloader/main/ldld.min.css")
+    +css("css/index.css")
+  body
+    .w-1024.mx-auto.rwd.my-4
+      .btn.btn-primary(onclick="run();")
+        .text-lg Submit
+        .text-sm trigger captcha
+    +script("assets/lib/@loadingio/ldquery/main/ldq.min.js")
+    +script("assets/lib/ldloader/main/ldld.min.js")
+    +script("js/secret.js")
+    +script("assets/lib/captcha/dev/captcha.min.js")
+    +script("assets/lib/captcha/dev/recaptcha.min.js")
+    +script("js/index.js")
