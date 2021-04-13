@@ -8,9 +8,14 @@
     this.config = opt.config || {};
     this.alt = !opt.alt
       ? null
-      : new captcha(opt.alt);
+      : opt.alt instanceof captcha
+        ? opt.alt
+        : new captcha(opt.alt);
     this._init = opt.init;
     this._get = opt.get;
+    this._failed = opt.isVerifyFailed || function(){
+      return false;
+    };
     this.inited = false;
     this.ready = false;
     this.queue = [];
@@ -75,7 +80,7 @@
       return this.get(opt).then(function(ret){
         return cb(ret);
       })['catch'](function(e){
-        if (this$.isCaptchaFailed(e) && this$.alt) {
+        if (this$._failed(e) && this$.alt) {
           return this$.alt.execute(cb);
         }
         return Promise.reject(e);

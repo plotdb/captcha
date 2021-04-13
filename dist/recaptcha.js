@@ -15,7 +15,7 @@
         };
         tag.onerror = function(){
           var ref$;
-          return rej((ref$ = new Error(), ref$.id = 1022, ref$.name = 'ldError', ref$));
+          return rej((ref$ = new Error(), ref$.id = 1022, ref$.name = 'lderror', ref$));
         };
         attr = {
           type: "text/javascript",
@@ -91,7 +91,7 @@
           },
           "expired-callback": function(){
             var ref$;
-            return rej((ref$ = new Error(), ref$.name = 'ldError', ref$.id = 1013, ref$));
+            return rej((ref$ = new Error(), ref$.name = 'lderror', ref$.id = 1013, ref$));
           }
         };
         id = grecaptcha.render(div, config, true);

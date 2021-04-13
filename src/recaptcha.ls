@@ -4,7 +4,7 @@ recaptcha.v3 = new captcha do
     (res, rej) <~ new Promise _
     tag = document.createElement(\script)
     tag.onload = ~> grecaptcha.ready ~> res!
-    tag.onerror = -> rej new Error! <<< {id: 1022, name: \ldError}
+    tag.onerror = -> rej new Error! <<< {id: 1022, name: \lderror}
     attr = do
       type: "text/javascript", async: '', defer: ''
       src: "https://www.google.com/recaptcha/api.js?render=#{@config.sitekey}"
@@ -37,7 +37,7 @@ recaptcha.v2 = new captcha do
       badge: "none"
       callback: (token) -> res {token}
       "error-callback": -> rej new Error(it)
-      "expired-callback": -> rej new Error! <<< {name: 'ldError', id: 1013}
+      "expired-callback": -> rej new Error! <<< {name: 'lderror', id: 1013}
     id = grecaptcha.render div, config, true
     grecaptcha.execute id .then ->
 
